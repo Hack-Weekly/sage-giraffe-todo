@@ -7,7 +7,7 @@ import cors from "cors";
 import helmet from "helmet";
 import { router } from "./routes";
 import { connect } from "./database";
-import { createTodo, getTodos } from "./controllers/todoController";
+import { createTodo, getTodos, updateTodo } from "./controllers/todoController";
 
 const app: Express = express();
 const port = process.env.PORT || 5000;
@@ -26,3 +26,5 @@ app.use(express.json());
 
 app.post('/api/todos', createTodo);
 app.post('/api/get-todos', getTodos);
+
+app.put('/api/edit-todo/:id', updateTodo);
