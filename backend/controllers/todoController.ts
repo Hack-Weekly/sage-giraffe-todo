@@ -12,3 +12,12 @@ export const createTodo = async (req: Request, res: Response) => {
   }
 };
 
+export const getTodos = async (req: Request, res: Response) => {
+  try {
+    const todos = await Todo.find();
+    res.json(todos);
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
+
