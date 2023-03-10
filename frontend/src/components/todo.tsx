@@ -13,7 +13,8 @@ type TodoProps = {
 }
 const Todo: React.FC<TodoProps> = ({ id, label, isDone, onCheck, onEdit, onDelete }) => (
     <li>
-        <Check onChange={ onCheck } />{ label }
+        <Check onChange={ onCheck } />
+        <span>{ label }</span>
         <EditButton onClick={ onEdit } />
         <DeleteButton onClick={ onDelete } />
     </li>

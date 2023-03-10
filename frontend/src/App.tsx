@@ -31,8 +31,8 @@ function App() {
   return (
     <div className="App">
       <h1>Todo App</h1>
-      <Filter />
-      <Add />
+      <Filter onChange={ (value) => { console.log(value) } } />
+      <Add onSubmit={ (label) => { console.log(label) } } />
       <TodoList todos={ todos } />
     </div>
   )
