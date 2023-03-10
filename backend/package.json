@@ -9,6 +9,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@types/mongoose": "^5.11.97",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",

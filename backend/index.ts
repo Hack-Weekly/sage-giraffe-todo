@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
 import { router } from "./routes";
+import { connect } from "./database";
 
 dotenv.config();
 
@@ -16,6 +17,5 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server hello world");
 });
 app.use(router);
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
-});
+
+connect();
