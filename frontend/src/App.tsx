@@ -1,39 +1,39 @@
+import React from 'react'
 import './App.css'
+import useTodoStore from './app/todoStore'
 import Add from './components/add'
 import Filter from './components/filter'
 import TodoList from './components/todo-list'
 
 function App() {
+  
+  const { todos, filter, fetch, addTodo, setFilter} = useTodoStore()
 
-  const todos = [
-    {
-      id: 1,
-      label: 'Create a todo app',
+  React.useEffect(() => {
+    fetch()
+  }, [])
+
+  const onAdd = (label: string) => {
+    const maxId = todos.reduce((acc, todo) => acc < todo.id ? todo.id : acc, 1)
+    addTodo({
+      id: maxId + 1,
+      label,
       isDone: false,
-    },
-    {
-      id: 2,
-      label: 'Make a figma design',
-      isDone: true,
-    },
-    {
-      id: 3,
-      label: 'Frontend tasks',
-      isDone: false,
-    },
-    {
-      id: 4,
-      label: 'Backend tasks',
-      isDone: false,
-    },
-  ]
+    })
+  }
 
   return (
     <div className="App">
       <h1>Todo App</h1>
-      <Filter onChange={ (value) => { console.log(value) } } />
-      <Add onSubmit={ (label) => { console.log(label) } } />
-      <TodoList todos={ todos } />
+      <Filter onChange={ setFilter } />
+      <Add onSubmit={ onAdd } />
+      <TodoList todos={ todos.filter(todo => {
+        return filter == 'done' ?
+            todo.isDone
+            : (filter == 'to-do' ?
+                !todo.isDone
+                : true)
+      }) } />
     </div>
   )
 }
