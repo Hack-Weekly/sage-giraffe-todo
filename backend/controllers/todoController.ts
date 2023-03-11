@@ -16,7 +16,7 @@ export const getTodos = async (req: Request, res: Response) => {
     const todos = await Todo.find();
     res.json(todos);
   } catch (error) {
-    res.status(500).json({ error: (error as Error).message });
+    res.status(404).json({ error: (error as Error).message });
   }
 };
 
@@ -31,7 +31,16 @@ export const updateTodo = async (req: Request, res: Response) => {
     if (!todo) throw new Error("Todo not found");
     res.json(todo);
   } catch (error) {
-    res.status(500).json({ error: (error as Error).message });
+    res.status(404).json({ error: (error as Error).message });
   }
 };
 
+export const deleteTodo = async (req: Request, res: Response) => {
+  try {
+    const todo = await Todo.findByIdAndDelete(req.params.id);
+    if (!todo) throw new Error("Todo not found");
+    res.json(todo);
+  } catch (error) {
+    res.status(404).json({ error: (error as Error).message });
+  }
+};

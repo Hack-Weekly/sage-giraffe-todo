@@ -1,6 +1,6 @@
 import { Router } from "express";
 import UserController from "../controllers/user";
-import { createTodo, getTodos, updateTodo } from "../controllers/todoController";
+import { createTodo, getTodos, updateTodo, deleteTodo } from "../controllers/todoController";
 
 export const API = Router();
 // Generating session id for the users
@@ -10,3 +10,5 @@ API.post('/create-todo', createTodo);
 API.post('/get-todos', getTodos);
 
 API.put('/edit-todo/:id', updateTodo);
+
+API.delete('/delete-todo/:id', deleteTodo);
