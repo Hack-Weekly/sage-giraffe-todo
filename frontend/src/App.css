@@ -1,0 +1,29 @@
+button {
+    background-color: grey;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    height: 44px;
+    width: 44px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-button {
+    background-color: #6183DA;
+}
+
+.delete-button {
+    background-color: #A64949;
+}
+
+.edit-button {
+    background-color: #52835C;
+}
+
+
+
+
