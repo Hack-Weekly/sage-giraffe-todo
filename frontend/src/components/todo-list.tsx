@@ -17,8 +17,8 @@ const TodoList: React.FC<TodoListProps> = ({ todos }) => {
         <ul>
             { todos.map(todo => (
                 <Todo key={ todo.id } { ...todo }
-                    onCheck={ () => toggleTodo(todo.id) }
-                    onEdit={ () => { console.log(`${ todo.id } edit button clicked`) }}
+                    onCheck={ () => { toggleTodo(todo.id) } }
+                    onEdit={ () => { editTodo(todo); console.log(`${ todo.id } edit button clicked`) }}
                     onDelete={ () => removeTodo(todo.id) }
                 />
             ))}
