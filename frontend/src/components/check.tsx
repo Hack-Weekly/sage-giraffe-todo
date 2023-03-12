@@ -5,14 +5,7 @@ type CheckProps = {
     isDone: boolean
 }
 const Check: React.FC<CheckProps> = ({ onChange, isDone }) => (
-    <div className="round-checkbox">
-        <input 
-            type="checkbox" 
-            onChange={ onChange }
-            className='input-checkbox'
-            checked={isDone}
-        />
-    </div>
+    <input type="checkbox" onChange={ onChange } checked={isDone}/>
 )
 
 export default Check

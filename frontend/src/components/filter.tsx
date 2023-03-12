@@ -12,7 +12,7 @@ const Filter: React.FC<FilterProps> = ({ onChange }) => {
     }
 
     return (
-        <select className="filter" onChange={ handleChange }>
+        <select onChange={ handleChange }>
             <option value="all">All</option>
             <option value="to-do">Not done</option>
             <option value="done">Done</option>

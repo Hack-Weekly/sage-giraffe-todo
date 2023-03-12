@@ -24,10 +24,8 @@ function App() {
 
   return (
     <div className="App">
-      <div className='header'>
-        <h1>Todo App</h1>
-        <Filter onChange={ setFilter } />
-      </div>
+      <h1>Todo App</h1>
+      <Filter onChange={ setFilter } />
       <Add onSubmit={ onAdd } />
       <TodoList todos={ todos.filter(todo => {
         return filter == 'done' ?
