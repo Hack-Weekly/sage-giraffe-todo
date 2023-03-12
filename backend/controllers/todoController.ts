@@ -72,9 +72,7 @@ const deleteAllTodos = async (
 
 const getTodoById = async (req: Request, res: Response, next: NextFunction) => {
   const id = req.params["id"];
-  console.log("-------Befor--------");
   const todo = await Todo.findById(id);
-  console.log("---------After------");
   if (!todo) next(new Error("invalid todo id."));
   else {
     res.json(

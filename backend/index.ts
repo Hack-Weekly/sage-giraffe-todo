@@ -8,14 +8,26 @@ import helmet from "helmet";
 import { router } from "./routes";
 import { connect } from "./database";
 import cookieParser from "cookie-parser";
-
+import morgan from "morgan";
 const app: Express = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors({ origin: "*", credentials: true }));
 app.use(helmet());
 app.use(cookieParser("ThisIsOurApiSecret"));
-
+app.use(
+  morgan(function (tokens, req, res) {
+    return [
+      tokens.method(req, res),
+      tokens.url(req, res),
+      tokens.status(req, res),
+      tokens.res(req, res, "content-length"),
+      "-",
+      tokens["response-time"](req, res),
+      "ms",
+    ].join(" ");
+  })
+);
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server hello world");
 });
