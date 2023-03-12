@@ -6,9 +6,9 @@ export const API = Router();
 // Generating session id for the users
 API.get("/id", UserController.GenerateUserId);
 
-API.post('/create-todo', createTodo);
-API.post('/get-todos', getTodos);
+API.post('/todo', createTodo);
+API.post('/todo/all', getTodos);
 
-API.put('/edit-todo/:id', updateTodo);
+API.put('/todo/:id', updateTodo);
 
-API.delete('/delete-todo/:id', deleteTodo);
+API.delete('/todo/:id', deleteTodo);
