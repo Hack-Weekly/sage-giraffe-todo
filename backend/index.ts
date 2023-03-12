@@ -17,6 +17,10 @@ app.use(helmet());
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server hello world");
 });
+
+app.use(express.json());
+
 app.use(router);
+
 //connect to Db If connect to DB success start Server Else console log the error
 connect(app, port);
