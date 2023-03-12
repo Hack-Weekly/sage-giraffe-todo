@@ -1,26 +1,39 @@
 import Todo from "../models/TodoModel";
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
+import { validationResult } from "express-validator";
+import { getResponse } from "../utils/normalizeResponse";
 
-export const createTodo = async (req: Request, res: Response) => {
+const createTodo = async (req: Request, res: Response, next: NextFunction) => {
+  // Check that body is valid else return requirements of valid body
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) next(errors);
+
   try {
     const { title, body, authorId } = req.body;
     const todo = await Todo.create({ title, body, authorId });
-    res.json(todo);
+    res.json(
+      getResponse({
+        code: 200,
+        message: "All todo's",
+        success: true,
+        data: todo,
+      })
+    );
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
   }
 };
 
-export const getTodos = async (req: Request, res: Response) => {
+const getAllTodos = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const todos = await Todo.find();
-    res.json(todos);
+    const allTodo = await Todo.find();
+    res.json();
   } catch (error) {
     res.status(404).json({ error: (error as Error).message });
   }
 };
 
-export const updateTodo = async (req: Request, res: Response) => {
+const updateTodo = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { title, body, authorId, isDone } = req.body;
     const todo = await Todo.findByIdAndUpdate(
@@ -35,7 +48,7 @@ export const updateTodo = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteTodo = async (req: Request, res: Response) => {
+const deleteTodo = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const todo = await Todo.findByIdAndDelete(req.params.id);
     if (!todo) throw new Error("Todo not found");
@@ -45,11 +58,22 @@ export const deleteTodo = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteAllTodos = async (req: Request, res: Response) => {
+const deleteAllTodos = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const result = await Todo.deleteMany({});
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
   }
+};
+export default {
+  createTodo,
+  getAllTodos,
+  updateTodo,
+  deleteTodo,
+  deleteAllTodos,
 };

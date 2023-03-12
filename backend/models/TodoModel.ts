@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Schema, model } from "mongoose";
 
-const TodoSchema = new Schema(
+export const TodoSchema = new Schema(
   {
     title: { type: String, require: true, trim: true },
     body: { type: String, require: true, trim: true },
