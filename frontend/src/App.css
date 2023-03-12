@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(180deg, #934F4F 0%, #9287A0 100%);
+    font-family: 'Inter';
+}
+
+.App {
+    width: 50%;
+    margin: 10rem auto;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    background: #F9F9F9;
+    border-radius: 10px;
+}
+
+.App ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 40px;
+    line-height: 48px;
+}
+
+select {
+    font-size: 1rem;
+    padding: 0.4rem;
+    background: #E9E9E9;
+    border: 1px solid #9E9E9E;
+    border-radius: 5px;
+}
+
+button {
+    background-color: grey;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    height: 44px;
+    width: 44px;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-button {
+    background-color: #6183DA;
+}
+
+.delete-button {
+    background-color: #A64949;
+    margin-left: 0.3rem;
+}
+
+.edit-button {
+    background-color: #52835C;
+    margin-left: 0.5rem;
+}

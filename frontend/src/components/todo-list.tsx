@@ -1,6 +1,7 @@
 import React from 'react'
 import useTodosStore from '../app/todoStore'
 import Todo from './todo'
+import '../styles/todoList.css';
 
 type TodoListProps = {
     todos: {
@@ -14,11 +15,11 @@ const TodoList: React.FC<TodoListProps> = ({ todos }) => {
     const { removeTodo, editTodo, toggleTodo } = useTodosStore()
 
     return (
-        <ul>
+        <ul className='todo-list'>
             { todos.map(todo => (
                 <Todo key={ todo.id } { ...todo }
                     onCheck={ () => toggleTodo(todo.id) }
-                    onEdit={ () => { console.log(`${ todo.id } edit button clicked`) }}
+                    onEdit={ () => editTodo(todo) }
                     onDelete={ () => removeTodo(todo.id) }
                 />
             ))}
