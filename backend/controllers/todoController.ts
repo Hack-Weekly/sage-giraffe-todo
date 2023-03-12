@@ -6,12 +6,11 @@ import { getResponse } from "../utils/normalizeResponse";
 const createTodo = async (req: Request, res: Response, next: NextFunction) => {
   // Check that body is valid else return requirements of valid body
   const errors = validationResult(req);
-  if (!errors.isEmpty()) next(errors);
-
+  if (!errors.isEmpty()) return next(errors);
   try {
     const { title, body, authorId } = req.body;
     const todo = await Todo.create({ title, body, authorId });
-    res.json(
+    return res.json(
       getResponse({
         code: 200,
         message: "All todo's",
@@ -70,10 +69,30 @@ const deleteAllTodos = async (
     res.status(500).json({ error: (error as Error).message });
   }
 };
+
+const getTodoById = async (req: Request, res: Response, next: NextFunction) => {
+  const id = req.params["id"];
+  console.log("-------Befor--------");
+  const todo = await Todo.findById(id);
+  console.log("---------After------");
+  if (!todo) next(new Error("invalid todo id."));
+  else {
+    res.json(
+      getResponse({
+        code: 200,
+        message: "todo of id : " + id,
+        success: true,
+        data: todo,
+      })
+    );
+  }
+};
+
 export default {
   createTodo,
   getAllTodos,
   updateTodo,
   deleteTodo,
   deleteAllTodos,
+  getTodoById,
 };

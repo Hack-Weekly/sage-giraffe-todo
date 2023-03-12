@@ -7,12 +7,14 @@ import cors from "cors";
 import helmet from "helmet";
 import { router } from "./routes";
 import { connect } from "./database";
+import cookieParser from "cookie-parser";
 
 const app: Express = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({ origin: "*", credentials: true }));
 app.use(helmet());
+app.use(cookieParser("ThisIsOurApiSecret"));
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server hello world");
