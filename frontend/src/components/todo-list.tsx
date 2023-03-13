@@ -11,7 +11,7 @@ type TodoListProps = {
 }
 const TodoList: React.FC<TodoListProps> = ({ todos }) => {
 
-    const { removeTodo, editTodo, toggleTodo } = useTodosStore()
+    const { removeTodo, editTodo, toggleTodo } = useTodosStore();
 
     return (
         <ul>
