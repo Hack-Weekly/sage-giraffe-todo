@@ -1,0 +1,33 @@
+.todo-list {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.todo-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    height: 44px
+}
+
+.todo-task {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background: #E9E9E9;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+}
+
+.round-checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.4rem;
+}
+
+.round-checkbox input {
+    height: 100%;
+    width: 100%;
+}

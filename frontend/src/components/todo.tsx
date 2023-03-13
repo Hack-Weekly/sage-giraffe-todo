@@ -17,7 +17,7 @@ const Todo: React.FC<TodoProps> = ({ id, label, isDone, onCheck, onEdit, onDelet
     const [ value, setValue ] = useState(label);
 
     return (
-        <li>
+        <li className="todo-field">
             <Check onChange={ onCheck } isDone={isDone} />
             { editing ? 
                 <input 
@@ -28,7 +28,7 @@ const Todo: React.FC<TodoProps> = ({ id, label, isDone, onCheck, onEdit, onDelet
                             setEditing(!editing);
                         }
                     }}/> 
-                : <span>{ value }</span> 
+                : <span className="todo-task">{ value }</span> 
             }
             <EditButton onClick={ onEdit } setEditing={setEditing} editing={editing} />
             <DeleteButton onClick={ onDelete } />

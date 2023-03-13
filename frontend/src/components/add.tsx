@@ -1,4 +1,6 @@
 import React, { FormEvent } from 'react'
+import '../styles/addTodo.css';
+import add from '../assets/add.svg';
 
 interface AddFormElements extends HTMLFormControlsCollection {
     label: HTMLInputElement,
@@ -18,12 +20,14 @@ const Add:React.FC<AddProps> = ({ onSubmit }) => {
     }
 
     return (
-        <form onSubmit={ handleSubmit }
+        <form className="add-todo" onSubmit={ handleSubmit }
             action=""
             method="post"
             aria-label="Add a new task">
-            <input type="text" name="label" />
-            <button type="submit">Add</button>
+            <input type="text" name="label" placeholder='Task name' />
+            <button type="submit" className="add-button">
+                <img src={add} alt="add todo"/>
+            </button>
         </form>
     )
 }

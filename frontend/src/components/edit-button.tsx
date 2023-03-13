@@ -1,4 +1,5 @@
 import React from 'react'
+import edit from '../assets/edit.svg';
 
 type EditButtonProps = {
     onClick: () => void,
@@ -6,11 +7,11 @@ type EditButtonProps = {
     editing: boolean,
 }
 const EditButton: React.FC<EditButtonProps> = ({ onClick, setEditing, editing}) => (
-    <button onClick={ () => {
+    <button className="edit-button" onClick={ () => {
         onClick();
         setEditing(!editing);
     }}>
-        Edit
+        <img src={edit} alt="edit todo"/>
     </button>
 )
 
