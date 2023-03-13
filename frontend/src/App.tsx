@@ -22,6 +22,9 @@ function App() {
     })
   }
 
+  const todosNum = todos.filter(todo => !todo.isDone);
+
+
   return (
     <div className="App">
       <div className='header'>
@@ -36,6 +39,9 @@ function App() {
                 !todo.isDone
                 : true)
       }) } />
+      <span className='current-tasks'>
+        { todosNum.length === 0 ? 'You have no tasks at this moment' : `You have ${todosNum.length} pending tasks`}
+      </span>
     </div>
   )
 }

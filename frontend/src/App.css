@@ -69,3 +69,47 @@ button {
     background-color: #52835C;
     margin-left: 0.5rem;
 }
+
+.current-tasks {
+    font-family: 'Inter';
+    font-size: 12px;
+    line-height: 15px;
+    color: #AF7979;
+}
+
+@media screen and (max-width: 1400px) {
+    .App {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .App {
+        font-size: 12px;
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 30px;
+    }
+
+    button, 
+    .round-checkbox input,
+    .round-checkbox span {
+        width: 30px;
+        height: 30px;
+    }
+
+    .todo-field {
+        height: 30px;
+    }
+
+
+    button img,
+    .round-checkbox input,
+    .round-checkbox span {
+        width: 20px;
+        height: 20px;
+    }
+}

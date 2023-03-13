@@ -10,7 +10,7 @@
     height: 44px
 }
 
-.todo-task {
+.todo-task, .editing-input {
     display: flex;
     align-items: center;
     padding: 0.5rem;
@@ -20,14 +20,75 @@
     width: 100%;
 }
 
+.editing-input {
+    font-size: 1rem;
+    background: #F9F9F9;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
 .round-checkbox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 0.4rem;
+    display: block;
+    position: relative;
+    margin-right: 2.5rem;
 }
 
 .round-checkbox input {
-    height: 100%;
-    width: 100%;
+   position: absolute;
+   opacity: 0;
+   height: 30px;
+   width: 30px;
+   top: -15px;
+   cursor: pointer;
+   margin: 0;
+   z-index: 10;
+}
+
+.round-checkbox span {
+    position: absolute;
+    top: -15px;
+    height: 30px;
+    width: 30px;
+    background-color: #F9F9F9;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.span-checkbox:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.input-checkbox:checked ~ .span-checkbox {
+    background-color: rgba(175, 121, 121, 0.4);
+}
+
+.input-checkbox:checked ~ .span-checkbox::after {
+    content: url('../assets/check.svg');
+    position: absolute;
+    top: 5px;
+    left: 2px;
+}
+
+@media screen and (max-width: 600px) {
+    .round-checkbox input,
+    .round-checkbox span {
+        width: 25px;
+        height: 25px;
+        top: -12px;
+    }
+
+    .todo-field {
+        height: 30px;
+    }
+
+    .round-checkbox {
+        margin-right: 2rem;
+    }
+
+    .input-checkbox:checked ~ .span-checkbox::after {
+        top: 2px;
+        left: 0;
+        transform: scale(.8);
+    }
 }
