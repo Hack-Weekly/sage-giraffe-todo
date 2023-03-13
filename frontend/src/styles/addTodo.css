@@ -14,3 +14,9 @@
 .add-todo input::placeholder {
     color: rgba(0, 0, 0, 0.32);
 }
+
+@media screen and (max-width: 600px) {
+    .add-todo input {
+        width: calc(100% - 2.3rem);
+    }
+}

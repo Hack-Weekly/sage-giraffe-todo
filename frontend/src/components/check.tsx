@@ -10,8 +10,10 @@ const Check: React.FC<CheckProps> = ({ onChange, isDone }) => (
             type="checkbox" 
             onChange={ onChange }
             className="input-checkbox"
+            id="checkbox"
             checked={isDone}
         />
+        <span className="span-checkbox"></span>
     </div>
 )
 

@@ -21,6 +21,7 @@ const Todo: React.FC<TodoProps> = ({ id, label, isDone, onCheck, onEdit, onDelet
             <Check onChange={ onCheck } isDone={isDone} />
             { editing ? 
                 <input 
+                    className='editing-input'
                     value={value} 
                     onChange={(e) => setValue(e.target.value)} 
                     onKeyDown={(e) => {
