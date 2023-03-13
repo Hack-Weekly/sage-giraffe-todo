@@ -20,8 +20,15 @@ const Todo: React.FC<TodoProps> = ({ id, label, isDone, onCheck, onEdit, onDelet
         <li>
             <Check onChange={ onCheck } isDone={isDone} />
             { editing ? 
-                <input value={value} onChange={(e) => setValue(e.target.value)}/> 
-                : <span>{ label }</span> 
+                <input 
+                    value={value} 
+                    onChange={(e) => setValue(e.target.value)} 
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            setEditing(!editing);
+                        }
+                    }}/> 
+                : <span>{ value }</span> 
             }
             <EditButton onClick={ onEdit } setEditing={setEditing} editing={editing} />
             <DeleteButton onClick={ onDelete } />
